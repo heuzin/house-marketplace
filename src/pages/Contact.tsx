@@ -7,7 +7,7 @@ import { ListingData } from "../models/Listings";
 
 const Contact = () => {
   const [message, setMessage] = useState("");
-  const [landlord, setLandlord] = useState<ListingData>({} as ListingData);
+  const [landlord, setLandlord] = useState<any>({} as any);
   const [searchParams, setSearchParams] = useSearchParams();
 
   const params = useParams();
