@@ -9,11 +9,10 @@ import { getAuth } from "firebase/auth";
 import { db } from "../firebase.config";
 import Spinner from "../components/Spinner";
 import shareIcon from "../assets/svg/shareIcon.svg";
-import { ListingsProps } from "../models/Listings";
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
 const Listings = () => {
-  const [listing, setListing] = useState<ListingsProps>({} as ListingsProps);
+  const [listing, setListing] = useState<any>({} as any);
   const [loading, setLoading] = useState(true);
   const [shareLinkCopied, setShareLinkCopied] = useState(false);
 
@@ -42,7 +41,7 @@ const Listings = () => {
   return (
     <main>
       <Swiper slidesPerView={1} pagination={{ clickable: true }}>
-        {listing.imgUrls?.map((url, index) => (
+        {listing.imgUrls?.map((url: any, index: number) => (
           <SwiperSlide key={index}>
             <div
               className="swiperSlideDiv"

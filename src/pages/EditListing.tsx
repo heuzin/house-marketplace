@@ -17,8 +17,8 @@ import { db } from "../firebase.config";
 const EditListing = () => {
   const [geolocationEnabled, setGeolocationEnabled] = useState(true);
   const [loading, setLoading] = useState(false);
-  const [listing, setListing] = useState();
-  const [formData, setFormData] = useState<ListingData>({
+  const [listing, setListing] = useState<any>();
+  const [formData, setFormData] = useState<any>({
     type: "rent",
     name: "",
     bedrooms: 1,
@@ -218,14 +218,14 @@ const EditListing = () => {
     }
 
     if (e.target.files) {
-      setFormData((prevState) => ({
+      setFormData((prevState: any) => ({
         ...prevState,
         images: e.target.files,
       }));
     }
 
     if (!e.target.files) {
-      setFormData((prevState) => ({
+      setFormData((prevState: any) => ({
         ...prevState,
         [e.target.id]: boolean ?? e.target.value,
       }));

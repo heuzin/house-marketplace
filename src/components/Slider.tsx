@@ -45,36 +45,35 @@ const Slider = () => {
     return <></>;
   }
 
-  return (
-    listings &&
-    listings.length > 0 && (
-      <>
-        <p className="exploreHeading">Recommended</p>
+  return listings && listings.length > 0 ? (
+    <>
+      <p className="exploreHeading">Recommended</p>
 
-        <Swiper slidesPerView={1} pagination={{ clickable: true }}>
-          {listings.map(({ data, id }) => (
-            <SwiperSlide
-              key={id}
-              onClick={() => navigate(`/category/${data.type}/${id}`)}
+      <Swiper slidesPerView={1} pagination={{ clickable: true }}>
+        {listings.map(({ data, id }) => (
+          <SwiperSlide
+            key={id}
+            onClick={() => navigate(`/category/${data.type}/${id}`)}
+          >
+            <div
+              style={{
+                background: `url(${data.imgUrls[0]}) center no-repeat`,
+                backgroundSize: "cover",
+              }}
+              className="swiperSlideDiv"
             >
-              <div
-                style={{
-                  background: `url(${data.imgUrls[0]}) center no-repeat`,
-                  backgroundSize: "cover",
-                }}
-                className="swiperSlideDiv"
-              >
-                <p className="swiperSlideText">{data.name}</p>
-                <p className="swiperSlidePrice">
-                  ${data.discountedPrice ?? data.regularPrice}{" "}
-                  {data.type === "rent" && "/ month"}
-                </p>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </>
-    )
+              <p className="swiperSlideText">{data.name}</p>
+              <p className="swiperSlidePrice">
+                ${data.discountedPrice ?? data.regularPrice}{" "}
+                {data.type === "rent" && "/ month"}
+              </p>
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </>
+  ) : (
+    <></>
   );
 };
 
